@@ -67,6 +67,7 @@ class Circle {
 		var maxY = boundingRect.bottom;
 		this.x = Math.round(minX + Math.random() * (maxX - minX));
 		this.y = Math.round(boundingRect.top + Math.random() * (boundingRect.bottom - boundingRect.top));
+		// Give initial speed, looks more professional
 		this.angle = Math.PI * 2 * Math.random();
 		this.speed=0.2 + Math.random();
 		this.vx = this.speed* Math.cos(this.angle);
@@ -74,7 +75,7 @@ class Circle {
 		this.r = 6 + 26 * Math.random()
 		this.color = this.getColour();
 	}
-	// Update circle
+	// Update circle, decay speed
 	update() {
 		var dist = this.distFrom(mouseX, mouseY)
 		if (dist < minDist){

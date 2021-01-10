@@ -144,6 +144,8 @@ function renderCircles() {
 }
 
 document.addEventListener("mousemove", handleMouse);
+window.onload = function() {
+	drawInitialCircles();
+	renderCircles();
+}
 
-drawInitialCircles();
-renderCircles();

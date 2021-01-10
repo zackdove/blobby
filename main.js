@@ -1,6 +1,33 @@
-const canvas = document.getElementById("canvas"),
-context = canvas.getContext("2d"),
-colorPallete = ["#00f", "#00a", "#00b", "#00c", "#00d", "#00e"];
+const canvas = document.getElementById("canvas");
+const context = canvas.getContext("2d");
+var blue = {
+	red: 0,
+	green: 0,
+	blue: 255
+}
+var green = {
+	red: 0,
+	green: 255,
+	blue: 0
+}
+var yellow = {
+	red: 255,
+	green: 255,
+	blue: 0
+}
+var red = {
+	red: 255,
+	green: 0,
+	blue: 0
+}
+var purple = {
+	red: 255,
+	green: 0,
+	blue: 255
+}
+var colours = [blue, green, yellow, red, purple];
+// Randomly select a colour
+var baseColour = colours[Math.round(Math.random() * colours.length)];
 
 var width = canvas.width = window.innerWidth;
 var  height = canvas.height = window.innerHeight;
@@ -30,9 +57,6 @@ function handleMouse(e){
 	mouseY = e.clientY;
 }
 
-function setColorPallete(base){
-	
-}
 
 class Circle {
 	constructor() {
@@ -48,8 +72,9 @@ class Circle {
 		this.vx = this.speed* Math.cos(this.angle);
 	    this.vy = this.speed* Math.sin(this.angle);
 		this.r = 6 + 26 * Math.random()
-		this.color = colorPallete[Math.floor(Math.random() * colorPallete.length)];
+		this.color = this.getColour();
 	}
+	// Update circle
 	update() {
 		var dist = this.distFrom(mouseX, mouseY)
 		if (dist < minDist){
@@ -67,10 +92,17 @@ class Circle {
 		this.x += this.vx;
 		this.y += this.vy;
 	}
+	// Get dist from center of circle to point
 	distFrom(x2, y2){
 		var dx = this.x - x2;
 		var dy = this.y - y2;
 		return Math.sqrt((dx*dx)+(dy*dy));
+	}
+	// Randomly dim colour from base colour
+	getColour(){
+		let mult = 0.6 + Math.random()*0.4;
+		let colour = "rgb("+baseColour.red*mult+","+baseColour.green*mult+","+baseColour.blue*mult+")";
+		return colour;
 	}
 }
 
@@ -88,33 +120,24 @@ function removeCircles() {
 	);
 }
 
+// Draw initial circles
 function drawInitialCircles(){
-	
 	for (var i = 0; i < numCircles; i++){
 		circles.push(new Circle());
-		
-		
 	}
 }
 
+// Render circles, recursively
 function renderCircles() {
 	context.clearRect(0, 0, width, height);
-	
-	// if (Math.random() > .2)
-	//   circles.push(new Circle());
-	
 	for (var i = 0; i < circles.length; i++) {
 		var b = circles[i];
 		context.fillStyle = b.color;
 		context.beginPath();
-		
 		context.arc(b.x, b.y, b.r, 0, Math.PI * 2, false);
-		
-		
 		context.fill();
 		b.update();
 	}
-	
 	removeCircles();
 	requestAnimationFrame(renderCircles);
 }

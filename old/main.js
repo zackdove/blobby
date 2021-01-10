@@ -1,5 +1,5 @@
-const canvas = document.getElementById("canvas"),
-context = canvas.getContext("2d");
+const canvas = document.getElementById("canvas")
+const context = canvas.getContext("2d");
 
 var width = canvas.width = window.innerWidth;
 var  height = canvas.height = window.innerHeight;
@@ -34,8 +34,6 @@ var purple = {
 	green: 0,
 	blue: 255
 }
-
-
 var colours = [blue, green, yellow, red, purple];
 var baseColour = blue;
 
@@ -52,10 +50,7 @@ function handleMouse(e){
 	src.y = e.clientY;
 }
 
-function setColorPallete(base){
-	
-}
-
+// Circle class
 class Circle {
 	constructor() {
 		this.x = src.x;

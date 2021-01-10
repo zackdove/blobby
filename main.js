@@ -12,7 +12,7 @@ var src = {
 var  circles = [];
 var mouseX = 0;
 var mouseY = 0;
-var minDist = 300;
+var minDist = 100;
 const splashTitle = document.getElementById("splashTitleText");
 const boundingRect = splashTitle.getBoundingClientRect();
 var numCircles = 60;
@@ -54,7 +54,7 @@ class Circle {
 		var dist = this.distFrom(mouseX, mouseY)
 		if (dist < minDist){
 			// +1 to stop being infinite where dist is 0
-			this.speed = 40 * 1/(dist+1);
+			this.speed = 200 * 1/(dist+1);
 			var dx = this.x- mouseX;
 			// Y reversed because coordinate system starts in top left corner
 			var dy = this.y - mouseY;

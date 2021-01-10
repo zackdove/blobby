@@ -4,19 +4,24 @@ const canvas = document.getElementById("canvas"),
 // ["#f00","#a00","#b00","#c00","#d00","#e00"];
 // ["white","#888","yellow","orange","darkorange","darkmagenta","darkgreen","khaki"];
 
-var width = canvas.width = window.innerWidth,
-  height = canvas.height = window.innerHeight,
-  src = {
+var width = canvas.width = window.innerWidth;
+var  height = canvas.height = window.innerHeight;
+var src = {
     x: width / 2,
     y: height / 2
-  },
-  circles = [];
+  }
+var  circles = [];
 
 window.onresize = function() {
   width = canvas.width = window.innerWidth;
   height = canvas.height = window.innerHeight;
   src.x= width / 2;
   src.y= height / 2;
+}
+
+function handleMouse(e){
+	src.x = e.clientX;
+	src.y = e.clientY;
 }
 
 class Circle {
@@ -81,5 +86,7 @@ function renderCircles() {
   removeCircles();
   requestAnimationFrame(renderCircles);
 }
+
+document.addEventListener("mousemove", handleMouse);
 
 renderCircles();

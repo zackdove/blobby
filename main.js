@@ -10,9 +10,9 @@ var src = {
 	y: height / 2
 }
 var  circles = [];
-var mouseX = width/2;
-var mouseY = height/2;
-var minDist = 200;
+var mouseX = 0;
+var mouseY = 0;
+var minDist = 300;
 const splashTitle = document.getElementById("splashTitleText");
 const boundingRect = splashTitle.getBoundingClientRect();
 var numCircles = 60;
@@ -51,17 +51,21 @@ class Circle {
 		this.color = colorPallete[Math.floor(Math.random() * colorPallete.length)];
 	}
 	update() {
-		this.x += this.vx;
-		this.y += this.vy;
+		var dist = this.distFrom(mouseX, mouseY)
+		if (dist < minDist){
+			// +1 to stop being infinite where dist is 0
+			this.speed = 40 * 1/(dist+1);
+			var dx = this.x- mouseX;
+			// Y reversed because coordinate system starts in top left corner
+			var dy = this.y - mouseY;
+			this.angle = Math.atan2(dy, dx);
+			this.r -= .01;
+		}
 		this.speed = this.speed * 0.98;
 		this.vx = this.speed* Math.cos(this.angle);
 	    this.vy = this.speed* Math.sin(this.angle);
-		// this.r -= .01;
-		
-		if (this.distFrom(mouseX, mouseY) < minDist){
-			this.speed = 1;
-		}
-		
+		this.x += this.vx;
+		this.y += this.vy;
 	}
 	distFrom(x2, y2){
 		var dx = this.x - x2;

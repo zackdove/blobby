@@ -88,24 +88,19 @@ function removeCircles() {
 	);
 }
 
+// Recursively render circles
 function renderCircles() {
 	context.clearRect(0, 0, width, height);
-	
 	if (Math.random() > .4)
 	circles.push(new Circle());
-	
 	for (var i = 0; i < circles.length; i++) {
 		var b = circles[i];
 		context.fillStyle = b.color;
-		context.beginPath();
-		
+		context.beginPath();	
 		context.arc(b.x, b.y, b.r, 0, Math.PI * 2, false);
-		
-		
 		context.fill();
 		b.update();
 	}
-	
 	removeCircles();
 	requestAnimationFrame(renderCircles);
 }

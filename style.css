@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'Maison Neue';
+  src: url("./fonts/hinted-MaisonNeue-Book.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body{
+font-family: "Maison Neue";
+  background: rgb(0, 0, 0);
+  margin: 0;
+  padding: 0;
+}
+
+#canvas{
+  position: absolute;
+  /* background: rgb(230, 0, 100); */
+  filter: url("#liquid");
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+}
+
+#splashTitle{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	z-index: 1;
+	color: white;
+	font-size: 70px;
+	text-align: center;
+}
+
+#splashTitle p {
+	width: 70rem;
+}

@@ -30,7 +30,7 @@ var colours = [blue, green, yellow, red, purple];
 var baseColour = colours[Math.round(Math.random() * (colours.length-1))];
 
 var width = canvas.width = window.innerWidth;
-var  height = canvas.height = window.innerHeight;
+var height = canvas.height = window.innerHeight;
 // Initially set to canvas half width/height, then set to mouse
 var src = {
 	x: width / 2,

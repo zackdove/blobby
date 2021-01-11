@@ -27,7 +27,7 @@ var purple = {
 }
 var colours = [blue, green, yellow, red, purple];
 // Randomly select a colour
-var baseColour = colours[Math.round(Math.random() * colours.length)];
+var baseColour = colours[Math.round(Math.random() * (colours.length-1))];
 
 var width = canvas.width = window.innerWidth;
 var  height = canvas.height = window.innerHeight;

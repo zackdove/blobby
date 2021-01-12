@@ -44,6 +44,7 @@ const splashTitle = document.getElementById("splashTitleText");
 const boundingRect = splashTitle.getBoundingClientRect();
 var numCircles = 60;
 
+// Handle resize
 window.onresize = function() {
 	width = canvas.width = window.innerWidth;
 	height = canvas.height = window.innerHeight;
@@ -57,7 +58,7 @@ function handleMouse(e){
 	mouseY = e.clientY;
 }
 
-
+// Circle class
 class Circle {
 	constructor() {
 		// Change to set the boundaries of where the random circles lay

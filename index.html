@@ -10,13 +10,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
   <defs>
     <filter id="liquid">
-      <!--important code : [blur + contrast] , contrast on alpha channel to prevent change color-->
+      <!-- The folllowing filter logic turns the SVG circles into 'blobs' -->
       <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
       <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 40 -10"/>
     </filter>
   </defs>
 </svg>
 <div id="splashTitle"><p id="splashTitleText">Digital projects that cut through the noise</p></div>
-
 <script src="main.js"></script>
 </body>

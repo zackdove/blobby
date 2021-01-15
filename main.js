@@ -144,9 +144,26 @@ function renderCircles() {
 	requestAnimationFrame(renderCircles);
 }
 
+// Handle when user device is mobile - by moving the blobs automatically
+function handleMobile(){
+	// Timeout before moving, in ms
+	let timeout = 2000;
+	// Need to change minimum distance here so that the blobs get moved
+	minDist = 200;
+	setTimeout(function(){
+		mouseX = src.x;
+		mouseY = src.y;
+		console.log("mouse moved");
+	}, timeout);
+}
+
 document.addEventListener("mousemove", handleMouse);
 window.onload = function() {
 	drawInitialCircles();
 	renderCircles();
+	let mouseQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+	if (!mouseQuery.matches){
+		handleMobile();
+	}
 }
 
